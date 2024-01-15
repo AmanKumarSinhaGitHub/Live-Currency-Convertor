@@ -18,11 +18,13 @@ function App() {
   };
 
   useEffect(() => {
-    if (amount && currencyInfo[to]) {
+    if (amount !== "" && currencyInfo[to]) {
       setConvertedAmount(amount * currencyInfo[to]);
+    } else {
+      setConvertedAmount(""); 
     }
   }, [amount, currencyInfo, to]);
-
+  
   return (
     <div
       className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
