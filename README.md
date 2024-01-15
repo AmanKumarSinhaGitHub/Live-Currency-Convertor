@@ -2,6 +2,10 @@
 
 This Currency Converter App is a user-friendly web application developed using React. It facilitates quick and accurate currency conversions by fetching real-time exchange rates from an API.
 
+## Live Demo
+
+Explore the live demo: [Currency Converter App Demo](https://amankumarsinhagithub.github.io/Live-Currency-Convertor/)
+
 ## Features
 
 - Fetches currency exchange rates from [Currency API](https://github.com/fawazahmed0/currency-api).
