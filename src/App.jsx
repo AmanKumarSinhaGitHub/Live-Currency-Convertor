@@ -8,8 +8,10 @@ function App() {
   const [to, setTo] = useState("inr");
   const [convertedAmount, setConvertedAmount] = useState();
 
+  // Fetch currency information based on the selected source currency
   const currencyInfo = useCurrencyInfo(from);
 
+  // Get the list of available currency options
   const options = Object.keys(currencyInfo);
 
   const swap = () => {
