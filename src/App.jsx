@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useCurrencyInfo from "./hooks/useCurrencyInfo";
 import InputBox from "./components/InputBox";
 
@@ -15,13 +15,13 @@ function App() {
   const swap = () => {
     setFrom(to);
     setTo(from);
-    setConvertedAmount(amount);
-    setAmount(convertedAmount);
   };
 
-  const convert = () => {
-    setConvertedAmount(amount * currencyInfo[to]);
-  };
+  useEffect(() => {
+    if (amount && currencyInfo[to]) {
+      setConvertedAmount(amount * currencyInfo[to]);
+    }
+  }, [amount, currencyInfo, to]);
 
   return (
     <div
@@ -32,12 +32,7 @@ function App() {
     >
       <div className="w-full">
         <div className="w-full max-w-md mx-auto border border-gray-60 rounded-lg p-5 backdrop-blur-sm bg-white/30">
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              convert();
-            }}
-          >
+          <form>
             <div className="w-full mb-1">
               <InputBox
                 label="From"
@@ -67,12 +62,6 @@ function App() {
                 amountDisable
               />
             </div>
-            <button
-              type="submit"
-              className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg"
-            >
-              Convert {from.toUpperCase()} to {to.toUpperCase()}
-            </button>
           </form>
         </div>
       </div>
